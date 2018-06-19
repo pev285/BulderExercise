@@ -558,6 +558,26 @@ Prefab:
       propertyPath: a
       value: 8.82
       objectReference: {fileID: 0}
+    - target: {fileID: 114868174568566328, guid: a1da74514ff1f1342bcb3f5c00608e84,
+        type: 2}
+      propertyPath: maxMoveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868174568566328, guid: a1da74514ff1f1342bcb3f5c00608e84,
+        type: 2}
+      propertyPath: moveAcceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 54636160974588826, guid: a1da74514ff1f1342bcb3f5c00608e84,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868174568566328, guid: a1da74514ff1f1342bcb3f5c00608e84,
+        type: 2}
+      propertyPath: minMoveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
   m_IsPrefabParent: 0

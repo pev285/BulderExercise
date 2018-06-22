@@ -1,15 +1,10 @@
-﻿using System.Collections;
+﻿using BuilderGame.DataBus;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RaycastCursor : MonoBehaviour {
 
-    private Rigidbody rb;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();  
-    }
 
     void LateUpdate () {
         RaycastHit hit = CommandKeeper.GetCameraRaycastPoint();

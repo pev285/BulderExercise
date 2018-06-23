@@ -441,7 +441,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1236321767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 200, y: 0.2, z: 200}
   m_Children: []
   m_Father: {fileID: 0}
@@ -549,7 +549,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalPosition.y
@@ -557,23 +557,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.97321904
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.2298798
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_RootOrder
@@ -607,6 +607,10 @@ Prefab:
     - target: {fileID: 1661206883149856, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745746154335126, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 136581671283828730, guid: a1da74514ff1f1342bcb3f5c00608e84, type: 2}

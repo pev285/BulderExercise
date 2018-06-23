@@ -13,14 +13,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsMapper:
   - type: 0
-    go: {fileID: 1041252713404042, guid: bbb1f5be20894d942bbbc415f94a6ca4, type: 2}
+    objectDescription: {fileID: 11400000, guid: 11b2c1da8409ead4391410c059e2a1ef,
+      type: 2}
   - type: 1
-    go: {fileID: 1009394491041660, guid: 91a3a13574f369e4aaf2b4bf9457c6a1, type: 2}
+    objectDescription: {fileID: 11400000, guid: 90e0699baa396454bb0485d515977fb8,
+      type: 2}
   - type: 2
-    go: {fileID: 1647248939934714, guid: 6ae35fe0af9f01141802baf9ea3c94bc, type: 2}
+    objectDescription: {fileID: 11400000, guid: 3345c021998444743862140b3e5a5fea,
+      type: 2}
   - type: 100
-    go: {fileID: 0}
+    objectDescription: {fileID: 11400000, guid: ba24fcf0f2b8bf144a3b511a88048732,
+      type: 2}
   - type: 101
-    go: {fileID: 0}
+    objectDescription: {fileID: 11400000, guid: 44c0e5397051937469ea42ab9bafee0b,
+      type: 2}
   - type: 102
-    go: {fileID: 0}
+    objectDescription: {fileID: 11400000, guid: a3de43980b34bae449e11c8cd691652f,
+      type: 2}

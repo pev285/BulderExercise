@@ -13,7 +13,7 @@ namespace BuilderGame.Presenter {
         public class MapTypeObjectPiar
         {
             public MapObjectType type;
-            public GameObject go;
+            public MapObjectDescription objectDescription;
         }
 
         [SerializeField]
@@ -25,7 +25,7 @@ namespace BuilderGame.Presenter {
             {
                 if (objectsMapper[i].type == type)
                 {
-                    return objectsMapper[i].go;
+                    return objectsMapper[i].objectDescription.Prefab;
                 }
             }
             return null;

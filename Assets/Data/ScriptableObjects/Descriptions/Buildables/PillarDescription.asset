@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: WallDescription
+  m_Name: PillarDescription
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  positiveCursorPrefab: {fileID: 0}
-  negativeCursorPrefab: {fileID: 0}
+  prefab: {fileID: 1736935827434082, guid: 78aa3d4ba51e06249acd544563565ba2, type: 2}
+  positiveCursorPrefab: {fileID: 1736935827434082, guid: ee3a555d4e62fe24da9d6302713b1659,
+    type: 2}
+  negativeCursorPrefab: {fileID: 1736935827434082, guid: 8a5a3a4428a21b94ca5b4a17ba127836,
+    type: 2}
   dim:
     Height: 0
     Rect:
@@ -21,4 +23,4 @@ MonoBehaviour:
       MinZ: 0
       MaxX: 0
       MaxZ: 0
-  canBuildOnTypes: 64000000
+  canBuildOnTypes: 6400000065000000

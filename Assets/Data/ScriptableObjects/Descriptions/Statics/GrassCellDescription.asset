@@ -9,10 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: SwampDescription
+  m_Name: GrassCellDescription
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1041252713404042, guid: bbb1f5be20894d942bbbc415f94a6ca4, type: 2}
   positiveCursorPrefab: {fileID: 0}
   negativeCursorPrefab: {fileID: 0}
   dim:
     Height: 0
+    Rect:
+      MinX: 0
+      MinZ: 0
+      MaxX: 0
+      MaxZ: 0
+  canBuildOnTypes: 

@@ -22,21 +22,33 @@ namespace BuilderGame.Presenter
 
         [SerializeField]
         private GameObject positiveCursorPrefab;
-        public GameObject PositiveCursor
+        private Transform positiveCursor = null;
+        public Transform PositiveCursor
         {
             get
             {
-                return positiveCursorPrefab;
+                if (positiveCursor == null)
+                {
+                    positiveCursor = Instantiate(positiveCursorPrefab, Vector3.zero, Quaternion.identity).GetComponent<Transform>();
+                    positiveCursor.gameObject.SetActive(false);
+                }
+                return positiveCursor;
             }
         }
 
         [SerializeField]
         private GameObject negativeCursorPrefab;
-        public GameObject NegativeCursor
+        private Transform negativeCursor = null;
+        public Transform NegativeCursor
         {
             get
             {
-                return negativeCursorPrefab;
+                if (negativeCursor == null)
+                {
+                    negativeCursor = Instantiate(negativeCursorPrefab, Vector3.zero, Quaternion.identity).GetComponent<Transform>();
+                    negativeCursor.gameObject.SetActive(false);
+                }
+                return negativeCursor;
             }
         }
 

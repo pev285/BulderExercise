@@ -15,6 +15,9 @@ namespace BuilderGame.Presenter {
 
         private MapData mapdata = new MapData();
 
+        [SerializeField]
+        private BuildingCursor buildingCursor;
+
 		void Start () 
 		{
             for (int xi = 0; xi < mapdata.xSize; xi++)
@@ -29,7 +32,7 @@ namespace BuilderGame.Presenter {
                 }
             }
 
-			
+            buildingCursor.SetCursorOn(MapObjectType.PILLAR, mapdata);
 		} // Start() //
 		
 	} // End Of Class //

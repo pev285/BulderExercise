@@ -6,13 +6,17 @@ namespace BuilderGame.Model {
 
     public enum MapObjectType
     {
-        BUILDABLE_CELL = 0,
-        STONE = 1,
-        SWAMP = 2,
+        AIR = 0,
+        GRASS = 10,
+        STONE = 22,
+        SWAMP = 33,
 
         PLATFORM = 100,
-        WALL = 101,
+        SMALL_PLATFORM = 101,
         PILLAR = 102,
+        SMALL_PILLAR = 103,
+        X_WALL = 111,
+        Z_WALL = 112,
     }
 
 } // namespace ////

@@ -19,19 +19,39 @@ namespace BuilderGame.Presenter {
         [SerializeField]
         private List<MapTypeObjectPiar> objectsMapper;
 
+        public MapObjectDescription GetDescriptionByType(MapObjectType type)
+        {
+            return objectsMapper[GetIndexByType(type)].objectDescription;
+        }
+
         public GameObject GetPrefabOfType(MapObjectType type)
+        {
+            return objectsMapper[GetIndexByType(type)].objectDescription.Prefab;
+        }
+        public Transform GetPositiveCursorOfType(MapObjectType type)
+        {
+            return objectsMapper[GetIndexByType(type)].objectDescription.PositiveCursor;
+        }
+        public Transform GetNegativeCursorOfType(MapObjectType type)
+        {
+            return objectsMapper[GetIndexByType(type)].objectDescription.NegativeCursor;
+        }
+
+
+        private int GetIndexByType(MapObjectType type)
         {
             for (int i = 0; i < objectsMapper.Count; i++)
             {
                 if (objectsMapper[i].type == type)
                 {
-                    return objectsMapper[i].objectDescription.Prefab;
+                    return i;
                 }
             }
-            return null;
+            return -1;
         }
-		
-	} // End Of Class //
+
+
+    } // End Of Class //
 
 } // namespace ////
 

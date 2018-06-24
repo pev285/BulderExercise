@@ -53,10 +53,15 @@ namespace BuilderGame
                 RaycastHit hit = CommandKeeper.GetCameraRaycastPoint();
                 Vector3 hitPoint = hit.point;
                 LastCursorPosition = new Vector3Int(
+                    (int)Mathf.Floor(hitPoint.x),
+                    (int)Mathf.Round(hitPoint.y),
+                    (int)Mathf.Floor(hitPoint.z)
+                    );
+/*                LastCursorPosition = new Vector3Int(
                     (int)Mathf.Round(hitPoint.x),
                     (int)Mathf.Round(hitPoint.y),
                     (int)Mathf.Round(hitPoint.z)
-                    );
+                    );*/
 
                 positiveCursor.position = LastCursorPosition;
                 negativeCursor.position = LastCursorPosition;

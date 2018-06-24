@@ -21,8 +21,11 @@ MonoBehaviour:
   - type: 33
     objectDescription: {fileID: 11400000, guid: 3345c021998444743862140b3e5a5fea,
       type: 2}
-  - type: 1100
+  - type: 100
     objectDescription: {fileID: 11400000, guid: ba24fcf0f2b8bf144a3b511a88048732,
+      type: 2}
+  - type: 101
+    objectDescription: {fileID: 11400000, guid: e65773f046680644f9caf7ed6c263e98,
       type: 2}
   - type: 102
     objectDescription: {fileID: 11400000, guid: a3de43980b34bae449e11c8cd691652f,

@@ -82,9 +82,9 @@ namespace BuilderGame.Model {
 
         public MapObjectType GetObjectTypeAt(Vector3Int position)
         {
-            int x = Mathf.Clamp(position.x, 0, xSize);
-            int y = Mathf.Clamp(position.y, 0, ySize);
-            int z = Mathf.Clamp(position.z, 0, zSize);
+            int x = Mathf.Clamp(position.x, 0, xSize-1);
+            int y = Mathf.Clamp(position.y, 0, ySize-1);
+            int z = Mathf.Clamp(position.z, 0, zSize-1);
 
             return map[x, y, z];
         }

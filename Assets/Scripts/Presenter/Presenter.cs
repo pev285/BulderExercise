@@ -32,7 +32,7 @@ namespace BuilderGame.Presenter {
                 }
             }
 
-            buildingCursor.SetCursorOn(MapObjectType.PILLAR, mapdata);
+            buildingCursor.SetCursorOn(MapObjectType.PLATFORM, mapdata);
 		} // Start() //
 		
 	} // End Of Class //

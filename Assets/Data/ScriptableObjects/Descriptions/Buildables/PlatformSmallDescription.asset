@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: SmallPlatformDescription
+  m_Name: PlatformSmallDescription
   m_EditorClassIdentifier: 
   prefab: {fileID: 1651256511650546, guid: c7d351558d6ad4946ac7b6107682435b, type: 2}
   positiveCursorPrefab: {fileID: 1651256511650546, guid: a5e02e2cb889b6b4da02bfdb08eabff9,
@@ -21,6 +21,6 @@ MonoBehaviour:
     Rect:
       MinX: 0
       MinZ: 0
-      MaxX: 0
-      MaxZ: 0
+      MaxX: 1
+      MaxZ: 1
   canBuildOnTypes: 0a00000066000000670000006f00000070000000

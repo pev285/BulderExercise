@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: MapObjectsMapper
   m_EditorClassIdentifier: 
   objectsMapper:
+  - type: 0
+    objectDescription: {fileID: 11400000, guid: 540c16c8226e931488665793a20ff232,
+      type: 2}
   - type: 10
     objectDescription: {fileID: 11400000, guid: 11b2c1da8409ead4391410c059e2a1ef,
       type: 2}
@@ -30,12 +33,12 @@ MonoBehaviour:
   - type: 102
     objectDescription: {fileID: 11400000, guid: a3de43980b34bae449e11c8cd691652f,
       type: 2}
+  - type: 103
+    objectDescription: {fileID: 11400000, guid: 97dda5be329407a448d6a66877cf3502,
+      type: 2}
   - type: 111
     objectDescription: {fileID: 11400000, guid: 44c0e5397051937469ea42ab9bafee0b,
       type: 2}
   - type: 112
-    objectDescription: {fileID: 11400000, guid: 8f036f8a5d4143b4c813d1f9e6a521ef,
-      type: 2}
-  - type: 103
     objectDescription: {fileID: 11400000, guid: 8f036f8a5d4143b4c813d1f9e6a521ef,
       type: 2}

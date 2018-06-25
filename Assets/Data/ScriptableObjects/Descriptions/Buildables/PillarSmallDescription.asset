@@ -9,18 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: PlatformDescription
+  m_Name: PillarSmallDescription
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1776792064573384, guid: dd1b22cad6d24b54da33f25f3a62d39e, type: 2}
-  positiveCursorPrefab: {fileID: 1418736239478106, guid: d477b4e913765c045af077b094ff2140,
+  prefab: {fileID: 1898555112329862, guid: e70114b0dcbb86d4b829b37dd0c1f810, type: 2}
+  positiveCursorPrefab: {fileID: 1898555112329862, guid: 8f6f4e98944060046a05f153137b9389,
     type: 2}
-  negativeCursorPrefab: {fileID: 1418736239478106, guid: bf2961730ca8a7b408f1da0cd6e98655,
+  negativeCursorPrefab: {fileID: 1898555112329862, guid: 02e6992a29649ae4b9d0be3a24a36082,
     type: 2}
   dim:
-    Height: 0
+    Height: 1
     Rect:
       MinX: 0
       MinZ: 0
-      MaxX: 2
-      MaxZ: 2
-  canBuildOnTypes: 0a00000066000000670000006f00000070000000
+      MaxX: 1
+      MaxZ: 1
+  canBuildOnTypes: 6400000065000000

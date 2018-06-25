@@ -26,13 +26,18 @@ namespace BuilderGame.Presenter {
                 {
                     MapObjectType type = mapdata.GetObjectTypeAt(xi, 0, zi);
 
+                    if ((int)type == 103)
+                    {
+                        Debug.Log("103 = " + type.ToString());
+                    }
+
                     GameObject prefab = objMaper.GetPrefabOfType(type);
 
                     Instantiate(prefab, new Vector3(xi, 0, zi), Quaternion.identity, environmentParent);
                 }
             }
 
-            buildingCursor.SetCursorOn(MapObjectType.PLATFORM, mapdata);
+            buildingCursor.SetCursorOn(MapObjectType.SMALL_PLATFORM, mapdata);
 		} // Start() //
 		
 	} // End Of Class //

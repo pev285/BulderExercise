@@ -9,18 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: SmallPillarDescription
+  m_Name: AirDescription
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1898555112329862, guid: e70114b0dcbb86d4b829b37dd0c1f810, type: 2}
-  positiveCursorPrefab: {fileID: 1898555112329862, guid: 8f6f4e98944060046a05f153137b9389,
-    type: 2}
-  negativeCursorPrefab: {fileID: 1898555112329862, guid: 02e6992a29649ae4b9d0be3a24a36082,
-    type: 2}
+  prefab: {fileID: 0}
+  positiveCursorPrefab: {fileID: 0}
+  negativeCursorPrefab: {fileID: 0}
   dim:
     Height: 0
     Rect:
       MinX: 0
       MinZ: 0
-      MaxX: 0
-      MaxZ: 0
-  canBuildOnTypes: 6400000065000000
+      MaxX: 1
+      MaxZ: 1
+  canBuildOnTypes: 

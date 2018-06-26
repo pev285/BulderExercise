@@ -11,6 +11,9 @@ namespace BuilderGame.DataBus
 
         public static Func<RaycastHit> GetCameraRaycastPoint;
 
+        public static Action<float, float> OnPlayerMoveCommand;
+        public static Action<float, float> OnPlayerRotateCommand;
+
         public static Action OnBuildCommand;
 
         // presenter -> view //

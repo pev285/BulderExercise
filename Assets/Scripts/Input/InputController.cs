@@ -1,4 +1,5 @@
 ﻿
+using BuilderGame.DataBus;
 using UnityEngine;
 
 
@@ -46,22 +47,36 @@ namespace BuilderGame.InputReading
         void Start()
         {
             rb = GetComponent<Rigidbody>();
+            CommandKeeper.OnPlayerMoveCommand += OnPlayerMoveCommand;
+            CommandKeeper.OnPlayerRotateCommand += OnPlayerRotateCommand;
         }
 
-        void Update()
+        private void OnPlayerMoveCommand(float horizontalAxis, float verticalAxis) 
         {
-            float horizontalMouseAxis = Input.GetAxis("Mouse X");
-            float verticlMouseAxis = Input.GetAxis("Mouse Y");
-            float horizontalAxis = Input.GetAxis("Horizontal");
-            float verticalAxis = Input.GetAxis("Vertical");
-
-            CalculateHorizontalRotation(horizontalMouseAxis);
-
             CalculateMovement(horizontalAxis, verticalAxis);
-
-            CalculateCameraVerticalRotation(verticlMouseAxis);
-
         }
+
+        private void OnPlayerRotateCommand(float horizontalMouseAxis, float verticalMouseAxis)
+        {
+            CalculateHorizontalRotation(horizontalMouseAxis);
+            CalculateCameraVerticalRotation(verticalMouseAxis);
+        }
+
+
+        //void Update()
+        //{
+        //    float horizontalMouseAxis = Input.GetAxis("Mouse X");
+        //    float verticlMouseAxis = Input.GetAxis("Mouse Y");
+        //    float horizontalAxis = Input.GetAxis("Horizontal");
+        //    float verticalAxis = Input.GetAxis("Vertical");
+
+        //    CalculateHorizontalRotation(horizontalMouseAxis);
+
+        //    CalculateMovement(horizontalAxis, verticalAxis);
+
+        //    CalculateCameraVerticalRotation(verticlMouseAxis);
+
+        //}
 
         private void CalculateCameraVerticalRotation(float verticlMouseAxis)
         {

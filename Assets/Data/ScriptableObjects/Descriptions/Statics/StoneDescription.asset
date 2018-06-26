@@ -15,7 +15,7 @@ MonoBehaviour:
   positiveCursorPrefab: {fileID: 0}
   negativeCursorPrefab: {fileID: 0}
   dim:
-    Height: 0
+    Height: 1
     Rect:
       MinX: 0
       MinZ: 0

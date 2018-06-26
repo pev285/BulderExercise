@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BuilderGame.Presenter
+namespace BuilderGame.Constructing
 {
     public class BuildingCursor : MonoBehaviour
     {
@@ -51,52 +51,58 @@ namespace BuilderGame.Presenter
             if (isCursorOn)
             {
                 RaycastHit hit = CommandKeeper.GetCameraRaycastPoint();
-                Vector3 hitPoint = hit.point;
 
-                //Debug.Log("hitpoint = " + hitPoint);
+                if (hit.collider != null)
+                {
+                    BuildingBlockPassport pass = hit.collider.GetComponentInParent<BuildingBlockPassport>();
+                    if (pass != null)
+                    {
+                        Vector3 hitPoint = pass.transform.position;
 
-                Vector3Int pos = new Vector3Int(
-                    (int)Mathf.Floor(hitPoint.x),
-                    (int)Mathf.Round(hitPoint.y),
-                    (int)Mathf.Floor(hitPoint.z)
-                    );
-                /*                LastCursorPosition = new Vector3Int(
-                                    (int)Mathf.Round(hitPoint.x),
-                                    (int)Mathf.Round(hitPoint.y),
-                                    (int)Mathf.Round(hitPoint.z)
-                                    );*/
+                        //Debug.Log("hitpoint = " + hitPoint);
 
-                Dimensions dim = cursorDescription.Dimensions;
-                Dimensions.SimpleRect rect = dim.Rect;
-
-                bool canBuildHere;
-                int h;
-                ProbeBuildingPlace(rect, out canBuildHere, out h);
-
-                Debug.Log("h = " + h);
-                LastCursorPosition = new Vector3Int(pos.x, pos.y + h, pos.z);
-                Debug.Log("LastCursorPosition = " + LastCursorPosition.ToString());
-                positiveCursor.position = LastCursorPosition;
-                negativeCursor.position = LastCursorPosition;
+                        Vector3Int pos = new Vector3Int(
+                            (int)Mathf.Floor(hitPoint.x),
+                            (int)Mathf.Round(hitPoint.y),
+                            (int)Mathf.Floor(hitPoint.z)
+                            );
 
 
-                positiveCursor.gameObject.SetActive(canBuildHere);
-                negativeCursor.gameObject.SetActive(!canBuildHere);
+                        Dimensions dim = cursorDescription.Dimensions;
+                        Dimensions.SimpleRect rect = dim.Rect;
+
+                        bool canBuildHere;
+                        int h;
+                        ProbeBuildingPlace(pos, rect, out canBuildHere, out h);
+
+                        LastCursorPosition = new Vector3Int(pos.x, pos.y + h, pos.z);
+                        positiveCursor.position = LastCursorPosition;
+                        negativeCursor.position = LastCursorPosition;
+
+
+                        positiveCursor.gameObject.SetActive(canBuildHere);
+                        negativeCursor.gameObject.SetActive(!canBuildHere);
+                    }
+                }
+                else
+                {
+                    positiveCursor.gameObject.SetActive(false);
+                    negativeCursor.gameObject.SetActive(false);
+                }
             }
 
         } // LateUpdate() ////
 
-        private void ProbeBuildingPlace(Dimensions.SimpleRect rect, out bool canBuildHere, out int h)
+        private void ProbeBuildingPlace(Vector3Int pos, Dimensions.SimpleRect rect, out bool canBuildHere, out int h)
         {
-            Vector3Int p1 = new Vector3Int(LastCursorPosition.x + rect.MinX, LastCursorPosition.y, LastCursorPosition.z + rect.MinZ);
-            Vector3Int p2 = new Vector3Int(LastCursorPosition.x + rect.MaxX - 1, LastCursorPosition.y, LastCursorPosition.z + rect.MinZ);
-            Vector3Int p3 = new Vector3Int(LastCursorPosition.x + rect.MinX, LastCursorPosition.y, LastCursorPosition.z + rect.MaxZ - 1);
-            Vector3Int p4 = new Vector3Int(LastCursorPosition.x + rect.MaxX - 1, LastCursorPosition.y, LastCursorPosition.z + rect.MaxZ - 1);
+            Vector3Int p1 = new Vector3Int(pos.x + rect.MinX, pos.y, pos.z + rect.MinZ);
+            Vector3Int p2 = new Vector3Int(pos.x + rect.MaxX - 1, pos.y, pos.z + rect.MinZ);
+            Vector3Int p3 = new Vector3Int(pos.x + rect.MinX, pos.y, pos.z + rect.MaxZ - 1);
+            Vector3Int p4 = new Vector3Int(pos.x + rect.MaxX - 1, pos.y, pos.z + rect.MaxZ - 1);
 
             MapObjectType type = mapData.GetObjectTypeAt(p1);
             canBuildHere = cursorDescription.CanBuildOn(type);
             MapObjectDescription desc = objectsMapper.GetDescriptionByType(type);
-            Debug.Log("p1 = " + p1 + ", type = " + type.ToString());
             h = desc.Dimensions.Height;
 
             type = mapData.GetObjectTypeAt(p2);

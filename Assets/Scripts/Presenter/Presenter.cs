@@ -1,4 +1,6 @@
-﻿using BuilderGame.Model;
+﻿using BuilderGame.Constructing;
+using BuilderGame.DataBus;
+using BuilderGame.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,20 +28,30 @@ namespace BuilderGame.Presenter {
                 {
                     MapObjectType type = mapdata.GetObjectTypeAt(xi, 0, zi);
 
-                    if ((int)type == 103)
-                    {
-                        Debug.Log("103 = " + type.ToString());
-                    }
-
                     GameObject prefab = objMaper.GetPrefabOfType(type);
 
                     Instantiate(prefab, new Vector3(xi, 0, zi), Quaternion.identity, environmentParent);
                 }
             }
 
+            CommandKeeper.OnBuildCommand += OnBuildCommand;
+
+            /////
             buildingCursor.SetCursorOn(MapObjectType.SMALL_PLATFORM, mapdata);
 		} // Start() //
 		
+
+        private void OnBuildCommand()
+        {
+
+        }
+
+        private void OnBuildingBlockChoose()
+        {
+
+        }
+
+
 	} // End Of Class //
 
 } // namespace ////

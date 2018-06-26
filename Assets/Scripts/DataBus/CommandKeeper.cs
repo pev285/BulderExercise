@@ -11,6 +11,8 @@ namespace BuilderGame.DataBus
 
         public static Func<RaycastHit> GetCameraRaycastPoint;
 
+        public static Action OnBuildCommand;
+
         // presenter -> view //
 
 

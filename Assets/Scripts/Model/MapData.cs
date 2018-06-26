@@ -75,9 +75,13 @@ namespace BuilderGame.Model {
             }
         }
 
-        public MapObjectType GetObjectTypeAt(int x, int y, int z)
+        public void SetObjectTypeAt(Vector3Int position, MapObjectType type)
         {
-            return GetObjectTypeAt(new Vector3Int(x, y, z));
+            int x = Mathf.Clamp(position.x, 0, xSize - 1);
+            int y = Mathf.Clamp(position.y, 0, ySize - 1);
+            int z = Mathf.Clamp(position.z, 0, zSize - 1);
+
+            map[x, y, z] = type;
         }
 
         public MapObjectType GetObjectTypeAt(Vector3Int position)
@@ -89,21 +93,18 @@ namespace BuilderGame.Model {
             return map[x, y, z];
         }
 
-        /*public bool TestBuildingPoint(Dimensions dimensions, Vector3 candidatePosition, out Vector3Int mapPosition)
+        public void SetObjectTypeAt(int x, int y, int z, MapObjectType type)
         {
-            mapPosition = Vector3Int.zero;
-
-            return false;
+            SetObjectTypeAt(new Vector3Int(x, y, z), type);
         }
 
-        public MapObjectType[] GetObjectsAt(Vector3 position)
+        public MapObjectType GetObjectTypeAt(int x, int y, int z)
         {
-
-
-            return null;
+            return GetObjectTypeAt(new Vector3Int(x, y, z));
         }
-		*/
-	} // End Of Class //
+
+
+    } // End Of Class //
 
 } // namespace ////
 

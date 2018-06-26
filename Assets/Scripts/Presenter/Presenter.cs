@@ -35,24 +35,34 @@ namespace BuilderGame.Presenter {
             }
 
             CommandKeeper.OnBuildCommand += OnBuildCommand;
+            CommandKeeper.OnBuildingBlockChoose += OnBuildingBlockChoose;
 
-            /////
-            buildingCursor.SetCursorOn(MapObjectType.SMALL_PLATFORM, mapdata);
-		} // Start() //
+
+        } // Start() //
 		
 
         private void OnBuildCommand()
         {
+            if (buildingCursor.CanBuildNow)
+            {
+                //buildingCursor.SetCursorOff();
+                MapObjectType type = buildingCursor.CurrentCursorType;
+                Vector3 pos = buildingCursor.CurrentCursorPosition;
+                GameObject prefab = objMaper.GetPrefabOfType(type);
+                Instantiate(prefab, pos, Quaternion.identity, environmentParent);
 
+                mapdata.SetObjectTypeAt((int)pos.x, (int)pos.y, (int)pos.z, type);
+            }
         }
 
-        private void OnBuildingBlockChoose()
+        private void OnBuildingBlockChoose(MapObjectType type)
         {
-
+            buildingCursor.SetCursorOff();
+            buildingCursor.SetCursorOn(type, mapdata);
         }
 
 
-	} // End Of Class //
+    } // End Of Class //
 
 } // namespace ////
 

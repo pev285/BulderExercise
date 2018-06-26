@@ -63,21 +63,6 @@ namespace BuilderGame.InputReading
         }
 
 
-        //void Update()
-        //{
-        //    float horizontalMouseAxis = Input.GetAxis("Mouse X");
-        //    float verticlMouseAxis = Input.GetAxis("Mouse Y");
-        //    float horizontalAxis = Input.GetAxis("Horizontal");
-        //    float verticalAxis = Input.GetAxis("Vertical");
-
-        //    CalculateHorizontalRotation(horizontalMouseAxis);
-
-        //    CalculateMovement(horizontalAxis, verticalAxis);
-
-        //    CalculateCameraVerticalRotation(verticlMouseAxis);
-
-        //}
-
         private void CalculateCameraVerticalRotation(float verticlMouseAxis)
         {
             currentCameraAngle -= verticlMouseAxis * verticalRotationSpeed;

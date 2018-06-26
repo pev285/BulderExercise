@@ -14,6 +14,7 @@ namespace BuilderGame.Constructing
         private ObjectsMapper objectsMapper;
 
         private bool isCursorOn = false;
+        private bool canBuildHere = false;
         private MapObjectType objectType;
         private Transform positiveCursor;
         private Transform negativeCursor;
@@ -23,6 +24,28 @@ namespace BuilderGame.Constructing
 
         public Vector3Int LastCursorPosition;
 
+
+        public bool CanBuildNow
+        {
+            get
+            {
+                return isCursorOn && canBuildHere;
+            }
+        }
+        public MapObjectType CurrentCursorType
+        {
+            get
+            {
+                return objectType;
+            }
+        }
+        public Vector3 CurrentCursorPosition
+        {
+            get
+            {
+                return LastCursorPosition;
+            }
+        }
 
 
 
@@ -46,6 +69,8 @@ namespace BuilderGame.Constructing
             isCursorOn = true;
         }
 
+        ///////////////////////////////////////////////////////////////////////////////
+
         void LateUpdate()
         {
             if (isCursorOn)
@@ -59,8 +84,6 @@ namespace BuilderGame.Constructing
                     {
                         Vector3 hitPoint = pass.transform.position;
 
-                        //Debug.Log("hitpoint = " + hitPoint);
-
                         Vector3Int pos = new Vector3Int(
                             (int)Mathf.Floor(hitPoint.x),
                             (int)Mathf.Round(hitPoint.y),
@@ -71,7 +94,6 @@ namespace BuilderGame.Constructing
                         Dimensions dim = cursorDescription.Dimensions;
                         Dimensions.SimpleRect rect = dim.Rect;
 
-                        bool canBuildHere;
                         int h;
                         ProbeBuildingPlace(pos, rect, out canBuildHere, out h);
 
@@ -79,6 +101,15 @@ namespace BuilderGame.Constructing
                         positiveCursor.position = LastCursorPosition;
                         negativeCursor.position = LastCursorPosition;
 
+                        // !!!! TODO
+                        if (h > 0)
+                        {
+                            MapObjectType type = mapData.GetObjectTypeAt(LastCursorPosition);
+                            if (type != MapObjectType.AIR)
+                            {
+                                canBuildHere = false;
+                            }
+                        }
 
                         positiveCursor.gameObject.SetActive(canBuildHere);
                         negativeCursor.gameObject.SetActive(!canBuildHere);
@@ -95,6 +126,8 @@ namespace BuilderGame.Constructing
 
         private void ProbeBuildingPlace(Vector3Int pos, Dimensions.SimpleRect rect, out bool canBuildHere, out int h)
         {
+
+
             Vector3Int p1 = new Vector3Int(pos.x + rect.MinX, pos.y, pos.z + rect.MinZ);
             Vector3Int p2 = new Vector3Int(pos.x + rect.MaxX - 1, pos.y, pos.z + rect.MinZ);
             Vector3Int p3 = new Vector3Int(pos.x + rect.MinX, pos.y, pos.z + rect.MaxZ - 1);

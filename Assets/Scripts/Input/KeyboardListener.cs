@@ -19,6 +19,27 @@ namespace BuilderGame.InputReading
             float verticalAxis = Input.GetAxis("Vertical");
             CommandKeeper.OnPlayerMoveCommand(horizontalAxis, verticalAxis);
 
+            if(Input.GetMouseButtonUp(0))
+            {
+                CommandKeeper.OnBuildCommand();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.SMALL_PLATFORM);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.SMALL_PILLAR);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.PLATFORM);
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.PILLAR);
+            }
+
 
         }
 

@@ -21,4 +21,8 @@ MonoBehaviour:
       MinZ: 0
       MaxX: 0
       MaxZ: 0
-  canBuildOnTypes: 
+  canBeBuiltNearMe:
+  - type: 100
+    position: 2
+  - type: 101
+    position: 2

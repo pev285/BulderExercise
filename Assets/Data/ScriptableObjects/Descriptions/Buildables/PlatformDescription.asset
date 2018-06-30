@@ -17,10 +17,22 @@ MonoBehaviour:
   negativeCursorPrefab: {fileID: 1418736239478106, guid: bf2961730ca8a7b408f1da0cd6e98655,
     type: 2}
   dim:
-    Height: 0
+    Height: 1
     Rect:
       MinX: 0
       MinZ: 0
       MaxX: 2
       MaxZ: 2
-  canBuildOnTypes: 0a00000066000000670000006f00000070000000
+  canBeBuiltNearMe:
+  - type: 102
+    position: 2
+  - type: 103
+    position: 2
+  - type: 111
+    position: 2
+  - type: 112
+    position: 2
+  - type: 100
+    position: 1
+  - type: 101
+    position: 1

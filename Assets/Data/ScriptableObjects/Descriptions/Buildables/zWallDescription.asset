@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: zWallDescription
   m_EditorClassIdentifier: 
   prefab: {fileID: 1646034375185704, guid: f378020a8365a2948943978c1eafa2c5, type: 2}
-  positiveCursorPrefab: {fileID: 1646034375185704, guid: 3a05ae03e8212054dbb33954dac8c9c8,
+  positiveCursorPrefab: {fileID: 1646034375185704, guid: b66b63083f190384cbd89f5be9350a4c,
     type: 2}
-  negativeCursorPrefab: {fileID: 1646034375185704, guid: b66b63083f190384cbd89f5be9350a4c,
+  negativeCursorPrefab: {fileID: 1646034375185704, guid: 3a05ae03e8212054dbb33954dac8c9c8,
     type: 2}
   dim:
     Height: 2
@@ -23,4 +23,8 @@ MonoBehaviour:
       MinZ: 0
       MaxX: 1
       MaxZ: 1
-  canBuildOnTypes: 6400000065000000
+  canBeBuiltNearMe:
+  - type: 100
+    position: 0
+  - type: 101
+    position: 0

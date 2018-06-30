@@ -19,7 +19,7 @@ namespace BuilderGame.InputReading
         {
             camera = GetComponent<Camera>();
 
-            CommandKeeper.GetCameraRaycastPoint += GetLastHitInfo;
+            CommandKeeper.GetCameraRaycastHit += GetLastHitInfo;
         }
 
         private RaycastHit GetLastHitInfo()

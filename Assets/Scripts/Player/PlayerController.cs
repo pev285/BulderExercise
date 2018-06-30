@@ -3,9 +3,9 @@ using BuilderGame.DataBus;
 using UnityEngine;
 
 
-namespace BuilderGame.InputReading
+namespace BuilderGame.Player
 {
-    public class InputController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
 
         [SerializeField]
@@ -39,7 +39,6 @@ namespace BuilderGame.InputReading
         [ReadOnly]
         [SerializeField]
         private Vector3 currentMoveDirection = Vector3.zero;
-        //private readonly float sqrt2 = 1.0f / Mathf.Sqrt(2); // Use coeff if moving along two axis.
 
 
         private Rigidbody rb;
@@ -49,6 +48,30 @@ namespace BuilderGame.InputReading
             rb = GetComponent<Rigidbody>();
             CommandKeeper.OnPlayerMoveCommand += OnPlayerMoveCommand;
             CommandKeeper.OnPlayerRotateCommand += OnPlayerRotateCommand;
+
+            CommandKeeper.GetPlayerPosition += GetPlayerPosition;
+            CommandKeeper.GetPlayerForward += GetPlayerForward;
+            CommandKeeper.GetPlayerRotationAngle += GetPlayerRotationAngle;
+        }
+
+        #region DataBus methods 
+
+        private float GetPlayerRotationAngle()
+        {
+            float angle = 0.0F;
+            Vector3 axis = Vector3.zero;
+            transform.rotation.ToAngleAxis(out angle, out axis);
+            return angle;
+        }
+
+        private Vector3 GetPlayerPosition()
+        {
+            return transform.position;
+        }
+
+        private Vector3 GetPlayerForward()
+        {
+            return transform.forward;
         }
 
         private void OnPlayerMoveCommand(float horizontalAxis, float verticalAxis) 
@@ -62,6 +85,9 @@ namespace BuilderGame.InputReading
             CalculateCameraVerticalRotation(verticalMouseAxis);
         }
 
+        #endregion
+
+        #region Movement calculations
 
         private void CalculateCameraVerticalRotation(float verticlMouseAxis)
         {
@@ -75,11 +101,6 @@ namespace BuilderGame.InputReading
             {
                 currentMoveDirection = verticalAxis * transform.forward + horizontalAxis * transform.right;
                 currentMoveDirection.Normalize();
-                /*            if (verticalAxis != 0 && horizontalAxis != 0)
-                            {
-                                currentMoveDirection *= sqrt2;
-                            }
-                            */
 
                 if (currentMoveSpeed == 0)
                 {
@@ -109,6 +130,10 @@ namespace BuilderGame.InputReading
             currentRotationSpeed = horizontalMouseAxis * horizontalRotationSpeed / Time.deltaTime;
         }
 
+        #endregion
+
+        #region Updates
+
         private void FixedUpdate()
         {
             if (currentRotationSpeed != 0)
@@ -127,7 +152,7 @@ namespace BuilderGame.InputReading
             myCamera.localRotation = Quaternion.Euler(currentCameraAngle, 0, 0);
         }
 
-
+        #endregion
 
     } // End of class ///
 

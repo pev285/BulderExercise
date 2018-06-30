@@ -1,4 +1,5 @@
-﻿using BuilderGame.Model;
+﻿using BuilderGame.Constructing;
+using BuilderGame.Model;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,15 +63,25 @@ namespace BuilderGame.Presenter
             }
         }
 
-        [SerializeField]
-        List<MapObjectType> canBuildOnTypes;
+        //[SerializeField]
+        //List<MapObjectType> canBuildOnTypes;
 
-        public bool CanBuildOn(MapObjectType type)
+        [SerializeField]
+        List<BuildCondition> canBeBuiltNearMe;
+
+        public bool CanBeBuildNearMe(MapObjectType type, out BuildCondition.RelativePosition position)
         {
-            if (canBuildOnTypes.Contains(type))
+            int count = canBeBuiltNearMe.Count;
+            for (int i = 0; i < count; i++)
             {
-                return true;
+                if (canBeBuiltNearMe[i].type == type)
+                {
+                    position = canBeBuiltNearMe[i].position;
+                    return true;
+                }
             }
+
+            position = BuildCondition.RelativePosition.ON_THE_SIDE;
             return false;
         }
         

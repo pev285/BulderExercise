@@ -10,7 +10,7 @@ namespace BuilderGame.DataBus
     {
         // input -> presenter //
 
-        public static Func<RaycastHit> GetCameraRaycastPoint;
+        public static Func<RaycastHit> GetCameraRaycastHit;
 
         public static Action<float, float> OnPlayerMoveCommand;
         public static Action<float, float> OnPlayerRotateCommand;
@@ -18,6 +18,11 @@ namespace BuilderGame.DataBus
         public static Action<MapObjectType> OnBuildingBlockChoose;
         public static Action OnBuildCommand;
 
+        // player -> presenter ///
+
+        public static Func<Vector3> GetPlayerPosition;
+        public static Func<Vector3> GetPlayerForward;
+        public static Func<float> GetPlayerRotationAngle;
 
         // presenter -> view //
 

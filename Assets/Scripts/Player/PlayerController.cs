@@ -61,6 +61,10 @@ namespace BuilderGame.Player
             float angle = 0.0F;
             Vector3 axis = Vector3.zero;
             transform.rotation.ToAngleAxis(out angle, out axis);
+            if (axis != Vector3.up)
+            {
+                angle = -angle;
+            }
             return angle;
         }
 

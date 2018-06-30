@@ -101,9 +101,9 @@ namespace BuilderGame.Constructing
                         canBuildOnLastCursorPosition = CanIBuildAndWhere(hitObjPositionInt, hit.point, out LastCursorPosition);
 
                         positiveCursor.position = LastCursorPosition;
-                        positiveCursor.rotation = cursorRotation;
+                        positiveCursor.GetChild(0).rotation = cursorRotation;
                         negativeCursor.position = LastCursorPosition;
-                        negativeCursor.rotation = cursorRotation;
+                        negativeCursor.GetChild(0).rotation = cursorRotation;
 
                         positiveCursor.gameObject.SetActive(canBuildOnLastCursorPosition);
                         negativeCursor.gameObject.SetActive(!canBuildOnLastCursorPosition);
@@ -146,16 +146,18 @@ namespace BuilderGame.Constructing
 
         } // LateUpdate() ////
 
-        private Quaternion CalculateCursorRotation(float viewangle)
+        private Quaternion CalculateCursorRotation(float playerViewAngle)
         {
-            Debug.Log("playerViewAngle = " + viewangle);
+            //Debug.Log("playerViewAngle = " + viewangle);
+            //Debug.Log("PlayerForward = " + CommandKeeper.GetPlayerForward());
+            //Debug.Log("PlayerPosition = " + CommandKeeper.GetPlayerPosition());
 
-            viewangle = viewangle % 360;
-            viewangle = Mathf.Round(viewangle / 90);
-            viewangle *= 90;
+            float discreteRotationAngle = playerViewAngle % 360;
+            discreteRotationAngle = Mathf.Round(discreteRotationAngle / 90);
+            discreteRotationAngle *= 90;
 
-            Debug.Log("cursorAngle = " + viewangle);
-            return Quaternion.AngleAxis(viewangle, Vector3.up);
+            //Debug.Log("cursorAngle = " + viewangle);
+            return Quaternion.AngleAxis(discreteRotationAngle, Vector3.up);
         }
 
         private bool CanIBuildAndWhere(Vector3Int parentPosition, Vector3 raycastPosition, out Vector3Int newCursorPosition)
@@ -167,12 +169,35 @@ namespace BuilderGame.Constructing
 
             newCursorPosition = parentPosition;
 
+            // Let's fing appropriate position on side of the selected (raycast hit) map object ///
+            // So far implementation for 1x1 objects only //
+            Vector3Int frontPos = new Vector3Int(parentPosition.x, parentPosition.y, parentPosition.z);
 
-            //// !!!!!!!!!!!!!!!!!
-            Vector3Int frontPos = new Vector3Int(parentPosition.x, parentPosition.y, parentPosition.z + 1);
+            float deltaX = raycastPosition.x - parentPosition.x;
+            float deltaZ = raycastPosition.z - parentPosition.z;
+            if (deltaX > deltaZ && deltaX + deltaZ < 1)
+            {
+                frontPos.z -= 1;
+            }
+            else if (deltaX > deltaZ && deltaX + deltaZ > 1)
+            {
+                frontPos.x += 1;
+            }
+            else if (deltaX < deltaZ && deltaX + deltaZ < 1)
+            {
+                frontPos.x -= 1;
+            }
+            else
+            {
+                frontPos.z += 1;
+            }
+
+            //Debug.Log("parentPos = " + parentPosition + ", frontPos = " + frontPos);
+
 
             if (!canBuildHere)
             {
+                //Debug.Log("Can't build at " + newCursorPosition);
                 newCursorPosition = parentPosition;
                 return canBuildHere;
             }

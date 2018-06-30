@@ -14,7 +14,7 @@ MonoBehaviour:
   prefab: {fileID: 1383436802958162, guid: 8386031f4c1398043a9889a2d00b0f20, type: 2}
   positiveCursorPrefab: {fileID: 1383436802958162, guid: 83722c111d22dd445a5b5722631540c6,
     type: 2}
-  negativeCursorPrefab: {fileID: 1383436802958162, guid: 1ccf0db7055b9cd4b9e5677ccfb244ff,
+  negativeCursorPrefab: {fileID: 1476512857247336, guid: f15535b6c9a68e747b333bacdd9b67ae,
     type: 2}
   dim:
     Height: 2

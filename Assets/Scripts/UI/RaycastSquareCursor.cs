@@ -32,7 +32,7 @@ namespace BuilderGame.UI
                         );
 
                     transform.position = hitObjPositionInt;
-                    Debug.Log("hit pos=" + transform.position);
+                    //Debug.Log("hit pos=" + transform.position);
                 }
             }
 

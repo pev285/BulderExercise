@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: xWallDescription
+  m_Name: WallDescription
   m_EditorClassIdentifier: 
   prefab: {fileID: 1383436802958162, guid: 8386031f4c1398043a9889a2d00b0f20, type: 2}
   positiveCursorPrefab: {fileID: 1383436802958162, guid: 83722c111d22dd445a5b5722631540c6,

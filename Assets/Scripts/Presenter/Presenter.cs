@@ -49,7 +49,17 @@ namespace BuilderGame.Presenter {
                 MapObjectType type = buildingCursor.CurrentCursorType;
                 Vector3 pos = buildingCursor.CurrentCursorPosition;
                 GameObject prefab = objMaper.GetPrefabOfType(type);
-                Instantiate(prefab, pos, Quaternion.identity, environmentParent);
+                GameObject go = Instantiate(prefab, pos, Quaternion.identity, environmentParent);
+                BuildingBlockRotator rotator = go.GetComponent<BuildingBlockRotator>();
+                if(rotator != null)
+                {
+                    //Debug.Log("Rotator is found");
+                    rotator.SetHorizontalRotation(buildingCursor.CurrentCursorRotationAngle);
+                }
+                //else
+                //{
+                //    Debug.Log("Rotator is not found");
+                //}
 
                 mapdata.SetObjectTypeAt((int)pos.x, (int)pos.y, (int)pos.z, type);
             }

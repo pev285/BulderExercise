@@ -16,13 +16,17 @@ namespace BuilderGame.Constructing
 
         private bool isCursorOn = false;
         private MapObjectType currentCursorType;
-        private Transform positiveCursor;
-        private Transform negativeCursor;
         private MapObjectDescription cursorDescription = null;
+
+        private Transform positiveCursor;
+        private BuildingBlockRotator positiveRotator;
+        private Transform negativeCursor;
+        private BuildingBlockRotator negativeRotator;
 
         private MapData mapData = null;
 
-        public Vector3Int LastCursorPosition;
+        private  Vector3Int lastCursorPosition;
+        private float lastCursorRotationAngle;
         private bool canBuildOnLastCursorPosition = false;
 
 
@@ -44,10 +48,16 @@ namespace BuilderGame.Constructing
         {
             get
             {
-                return LastCursorPosition;
+                return lastCursorPosition;
             }
         }
-
+        public float CurrentCursorRotationAngle
+        {
+            get
+            {
+                return lastCursorRotationAngle;
+            }
+        }
 
 
         public void SetCursorOff()
@@ -65,7 +75,9 @@ namespace BuilderGame.Constructing
             this.currentCursorType = type;
             cursorDescription = objectsMapper.GetDescriptionByType(type);
             positiveCursor = cursorDescription.PositiveCursor;
+            positiveRotator = positiveCursor.GetComponent<BuildingBlockRotator>();
             negativeCursor = cursorDescription.NegativeCursor;
+            negativeRotator = negativeCursor.GetComponent<BuildingBlockRotator>();
             this.mapData = mapData;
             isCursorOn = true;
         }
@@ -96,14 +108,21 @@ namespace BuilderGame.Constructing
 
                         ////////
                         
-                        Quaternion cursorRotation = CalculateCursorRotation(CommandKeeper.GetPlayerRotationAngle());
+                        lastCursorRotationAngle = CalculateCursorRotation(CommandKeeper.GetPlayerRotationAngle());
 
-                        canBuildOnLastCursorPosition = CanIBuildAndWhere(hitObjPositionInt, hit.point, out LastCursorPosition);
+                        canBuildOnLastCursorPosition = CanIBuildAndWhere(hitObjPositionInt, hit.point, out lastCursorPosition);
 
-                        positiveCursor.position = LastCursorPosition;
-                        positiveCursor.GetChild(0).rotation = cursorRotation;
-                        negativeCursor.position = LastCursorPosition;
-                        negativeCursor.GetChild(0).rotation = cursorRotation;
+                        positiveCursor.position = lastCursorPosition;
+                        negativeCursor.position = lastCursorPosition;
+
+                        if (positiveRotator != null)
+                        {
+                            positiveRotator.SetHorizontalRotation(lastCursorRotationAngle);
+                        }
+                        if (negativeRotator != null)
+                        {
+                            negativeRotator.SetHorizontalRotation(lastCursorRotationAngle);
+                        }
 
                         positiveCursor.gameObject.SetActive(canBuildOnLastCursorPosition);
                         negativeCursor.gameObject.SetActive(!canBuildOnLastCursorPosition);
@@ -146,18 +165,13 @@ namespace BuilderGame.Constructing
 
         } // LateUpdate() ////
 
-        private Quaternion CalculateCursorRotation(float playerViewAngle)
+        private float CalculateCursorRotation(float playerViewAngle)
         {
-            //Debug.Log("playerViewAngle = " + viewangle);
-            //Debug.Log("PlayerForward = " + CommandKeeper.GetPlayerForward());
-            //Debug.Log("PlayerPosition = " + CommandKeeper.GetPlayerPosition());
-
             float discreteRotationAngle = playerViewAngle % 360;
             discreteRotationAngle = Mathf.Round(discreteRotationAngle / 90);
             discreteRotationAngle *= 90;
 
-            //Debug.Log("cursorAngle = " + viewangle);
-            return Quaternion.AngleAxis(discreteRotationAngle, Vector3.up);
+            return discreteRotationAngle;
         }
 
         private bool CanIBuildAndWhere(Vector3Int parentPosition, Vector3 raycastPosition, out Vector3Int newCursorPosition)
@@ -169,35 +183,9 @@ namespace BuilderGame.Constructing
 
             newCursorPosition = parentPosition;
 
-            // Let's fing appropriate position on side of the selected (raycast hit) map object ///
-            // So far implementation for 1x1 objects only //
-            Vector3Int frontPos = new Vector3Int(parentPosition.x, parentPosition.y, parentPosition.z);
-
-            float deltaX = raycastPosition.x - parentPosition.x;
-            float deltaZ = raycastPosition.z - parentPosition.z;
-            if (deltaX > deltaZ && deltaX + deltaZ < 1)
-            {
-                frontPos.z -= 1;
-            }
-            else if (deltaX > deltaZ && deltaX + deltaZ > 1)
-            {
-                frontPos.x += 1;
-            }
-            else if (deltaX < deltaZ && deltaX + deltaZ < 1)
-            {
-                frontPos.x -= 1;
-            }
-            else
-            {
-                frontPos.z += 1;
-            }
-
-            //Debug.Log("parentPos = " + parentPosition + ", frontPos = " + frontPos);
-
 
             if (!canBuildHere)
             {
-                //Debug.Log("Can't build at " + newCursorPosition);
                 newCursorPosition = parentPosition;
                 return canBuildHere;
             }
@@ -209,6 +197,10 @@ namespace BuilderGame.Constructing
                         newCursorPosition.y += parentDescription.Dimensions.Height;
                         break;
                     case BuildCondition.RelativePosition.ON_THE_SIDE:
+                        // Let's fing appropriate position on side of the selected (raycast hit) map object ///
+                        // So far implementation for 1x1 objects only //
+                        Vector3Int frontPos = CalculateOnTheSidePosition(parentPosition, raycastPosition);
+
                         newCursorPosition = frontPos;
                         break;
                     case BuildCondition.RelativePosition.INSTEAD:
@@ -232,6 +224,32 @@ namespace BuilderGame.Constructing
 
             return canBuildHere;
         } // CanIBuildAndWhere() /////
+
+        private static Vector3Int CalculateOnTheSidePosition(Vector3Int parentPosition, Vector3 raycastPosition)
+        {
+            Vector3Int frontPos = new Vector3Int(parentPosition.x, parentPosition.y, parentPosition.z);
+
+            float deltaX = raycastPosition.x - parentPosition.x;
+            float deltaZ = raycastPosition.z - parentPosition.z;
+            if (deltaX > deltaZ && deltaX + deltaZ < 1)
+            {
+                frontPos.z -= 1;
+            }
+            else if (deltaX > deltaZ && deltaX + deltaZ > 1)
+            {
+                frontPos.x += 1;
+            }
+            else if (deltaX < deltaZ && deltaX + deltaZ < 1)
+            {
+                frontPos.x -= 1;
+            }
+            else
+            {
+                frontPos.z += 1;
+            }
+
+            return frontPos;
+        }
 
 
 

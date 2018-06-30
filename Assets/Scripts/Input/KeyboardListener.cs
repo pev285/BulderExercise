@@ -33,11 +33,11 @@ namespace BuilderGame.InputReading
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.X_WALL);
+                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.WALL);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.Z_WALL);
+                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.CORNER_WALL);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {

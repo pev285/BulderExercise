@@ -15,8 +15,8 @@ namespace BuilderGame.Model {
         SMALL_PLATFORM = 101,
         PILLAR = 102,
         SMALL_PILLAR = 103,
-        X_WALL = 111,
-        Z_WALL = 112,
+        WALL = 111,
+        CORNER_WALL = 112,
     }
 
 } // namespace ////

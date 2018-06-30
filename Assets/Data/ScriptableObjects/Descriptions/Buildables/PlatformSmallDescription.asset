@@ -36,3 +36,5 @@ MonoBehaviour:
     position: 1
   - type: 101
     position: 1
+  - type: 120
+    position: 2

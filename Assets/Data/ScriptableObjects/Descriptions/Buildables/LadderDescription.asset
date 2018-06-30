@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
-  m_Name: PillarSmallDescription
+  m_Name: LadderDescription
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1898555112329862, guid: e70114b0dcbb86d4b829b37dd0c1f810, type: 2}
-  positiveCursorPrefab: {fileID: 1898555112329862, guid: 8f6f4e98944060046a05f153137b9389,
+  prefab: {fileID: 1493462850568268, guid: 0d195027cc9ac144fbdd317f302c0c15, type: 2}
+  positiveCursorPrefab: {fileID: 1488661139613566, guid: 80d0dea5e6aed16409532392b3194fe9,
     type: 2}
-  negativeCursorPrefab: {fileID: 1898555112329862, guid: 02e6992a29649ae4b9d0be3a24a36082,
+  negativeCursorPrefab: {fileID: 1108167706009474, guid: c48d862c961067b4abcd43e573349717,
     type: 2}
   dim:
     Height: 1
@@ -24,13 +24,5 @@ MonoBehaviour:
       MaxX: 1
       MaxZ: 1
   canBeBuiltNearMe:
-  - type: 100
-    position: 0
-  - type: 101
-    position: 0
-  - type: 102
-    position: 0
-  - type: 103
-    position: 0
   - type: 120
-    position: 1
+    position: 0

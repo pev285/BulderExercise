@@ -68,7 +68,10 @@ namespace BuilderGame.Presenter {
         private void OnBuildingBlockChoose(MapObjectType type)
         {
             buildingCursor.SetCursorOff();
-            buildingCursor.SetCursorOn(type, mapdata);
+            if (type != MapObjectType.AIR)
+            {
+                buildingCursor.SetCursorOn(type, mapdata);
+            }
         }
 
 

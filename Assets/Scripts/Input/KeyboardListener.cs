@@ -39,15 +39,22 @@ namespace BuilderGame.InputReading
             {
                 CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.CORNER_WALL);
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.PLATFORM);
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha6))
+            //else if (Input.GetKeyDown(KeyCode.Alpha8))
+            //{
+            //    CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.PLATFORM);
+            //}
+            else if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 CommandKeeper.OnBuildingBlockChoose(Model.MapObjectType.PILLAR);
             }
-
+            else if (Input.GetKeyUp(KeyCode.Escape))
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
 
         }
 

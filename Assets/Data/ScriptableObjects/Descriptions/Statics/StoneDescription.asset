@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
+  m_Name: StoneDescription
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1009394491041660, guid: 91a3a13574f369e4aaf2b4bf9457c6a1, type: 2}
+  positiveCursorPrefab: {fileID: 0}
+  negativeCursorPrefab: {fileID: 0}
+  dim:
+    Height: 1
+    Rect:
+      MinX: 0
+      MinZ: 0
+      MaxX: 0
+      MaxZ: 0
+  canBuildOnTypes: 

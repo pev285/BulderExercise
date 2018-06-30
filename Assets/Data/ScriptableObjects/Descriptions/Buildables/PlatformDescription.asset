@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
+  m_Name: PlatformDescription
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1776792064573384, guid: dd1b22cad6d24b54da33f25f3a62d39e, type: 2}
+  positiveCursorPrefab: {fileID: 1418736239478106, guid: d477b4e913765c045af077b094ff2140,
+    type: 2}
+  negativeCursorPrefab: {fileID: 1418736239478106, guid: bf2961730ca8a7b408f1da0cd6e98655,
+    type: 2}
+  dim:
+    Height: 1
+    Rect:
+      MinX: 0
+      MinZ: 0
+      MaxX: 2
+      MaxZ: 2
+  canBeBuiltNearMe:
+  - type: 102
+    position: 2
+  - type: 103
+    position: 2
+  - type: 111
+    position: 2
+  - type: 112
+    position: 2
+  - type: 100
+    position: 1
+  - type: 101
+    position: 1

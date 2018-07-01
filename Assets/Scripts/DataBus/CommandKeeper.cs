@@ -12,11 +12,15 @@ namespace BuilderGame.DataBus
 
         public static Func<RaycastHit> GetCameraRaycastHit;
 
+        public static Action<MapObjectType> OnBuildingBlockChoose;
+        public static Action OnBuildCommand;
+
+        // input -> player //
         public static Action<float, float> OnPlayerMoveCommand;
         public static Action<float, float> OnPlayerRotateCommand;
 
-        public static Action<MapObjectType> OnBuildingBlockChoose;
-        public static Action OnBuildCommand;
+        // view -> player ///
+        public static Action<bool> SetPlayerOnALadder;
 
         // player -> presenter ///
 

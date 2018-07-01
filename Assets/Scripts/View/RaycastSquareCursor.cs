@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BuilderGame.UI
+namespace BuilderGame.View
 {
     public class RaycastSquareCursor : MonoBehaviour
     {

@@ -8,6 +8,16 @@ namespace BuilderGame.Player
     public class PlayerController : MonoBehaviour
     {
 
+        private enum MovementType
+        {
+            HORIZONTAL,
+            LADDER,
+        }
+        // Are we on a ladder or something?
+        private MovementType currentMovementType = MovementType.HORIZONTAL;
+        private int activeLaddersNumber = 0;
+
+
         [SerializeField]
         private Transform myCamera;
         [SerializeField]
@@ -52,9 +62,35 @@ namespace BuilderGame.Player
             CommandKeeper.GetPlayerPosition += GetPlayerPosition;
             CommandKeeper.GetPlayerForward += GetPlayerForward;
             CommandKeeper.GetPlayerRotationAngle += GetPlayerRotationAngle;
+
+            CommandKeeper.SetPlayerOnALadder += SetPlayerOnALadder;
         }
 
         #region DataBus methods 
+
+
+        private void SetPlayerOnALadder(bool on)
+        {
+            if (on)
+            {
+                activeLaddersNumber++;
+            }
+            else
+            {
+                activeLaddersNumber--;
+            }
+
+           if (activeLaddersNumber > 0)
+            {
+                currentMovementType = MovementType.LADDER;
+                rb.useGravity = false;
+            }
+           else
+            {
+                currentMovementType = MovementType.HORIZONTAL;
+                rb.useGravity = true;
+            }
+        }
 
         private float GetPlayerRotationAngle()
         {
@@ -101,33 +137,66 @@ namespace BuilderGame.Player
 
         private void CalculateMovement(float horizontalAxis, float verticalAxis)
         {
-            if (verticalAxis != 0 || horizontalAxis != 0)
+            if (currentMovementType == MovementType.HORIZONTAL)
             {
-                currentMoveDirection = verticalAxis * transform.forward + horizontalAxis * transform.right;
-                currentMoveDirection.Normalize();
-
-                if (currentMoveSpeed == 0)
+                if (verticalAxis != 0 || horizontalAxis != 0)
                 {
-                    currentMoveSpeed = minMoveSpeed;
+                    currentMoveDirection = verticalAxis * transform.forward + horizontalAxis * transform.right;
+                    currentMoveDirection.Normalize();
+
+                    if (currentMoveSpeed == 0)
+                    {
+                        currentMoveSpeed = minMoveSpeed;
+                    }
+                    else
+                    {
+                        currentMoveSpeed += moveAcceleration * Time.deltaTime;
+                    }
+                    if (currentMoveSpeed > maxMoveSpeed)
+                    {
+                        currentMoveSpeed = maxMoveSpeed;
+                    }
                 }
                 else
                 {
-                    currentMoveSpeed += moveAcceleration * Time.deltaTime;
-                }
-                if (currentMoveSpeed > maxMoveSpeed)
-                {
-                    currentMoveSpeed = maxMoveSpeed;
+                    currentMoveSpeed -= moveAcceleration * Time.deltaTime;
+                    if (currentMoveSpeed < minMoveSpeed)
+                    {
+                        currentMoveSpeed = 0;
+                    }
                 }
             }
-            else
+            else if (currentMovementType == MovementType.LADDER)
             {
-                currentMoveSpeed -= moveAcceleration * Time.deltaTime;
-                if (currentMoveSpeed < minMoveSpeed)
+                if (verticalAxis != 0 || horizontalAxis != 0)
                 {
-                    currentMoveSpeed = 0;
+                    currentMoveDirection = verticalAxis * (transform.up + 0.05f * transform.forward) + horizontalAxis * transform.right;
+                    currentMoveDirection.Normalize();
+
+                    if (currentMoveSpeed == 0)
+                    {
+                        currentMoveSpeed = minMoveSpeed;
+                    }
+                    else
+                    {
+                        currentMoveSpeed += moveAcceleration * Time.deltaTime;
+                    }
+                    if (currentMoveSpeed > maxMoveSpeed)
+                    {
+                        currentMoveSpeed = maxMoveSpeed;
+                    }
+                }
+                else
+                {
+                    currentMoveSpeed -= moveAcceleration * Time.deltaTime;
+                    if (currentMoveSpeed < minMoveSpeed)
+                    {
+                        currentMoveSpeed = 0;
+                    }
                 }
             }
         }
+        
 
         private void CalculateHorizontalRotation(float horizontalMouseAxis)
         {

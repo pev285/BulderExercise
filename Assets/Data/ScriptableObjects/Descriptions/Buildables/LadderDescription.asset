@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c190fcc96550e14489e5c9415314115, type: 3}
+  m_Name: LadderDescription
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1493462850568268, guid: 0d195027cc9ac144fbdd317f302c0c15, type: 2}
+  positiveCursorPrefab: {fileID: 1488661139613566, guid: 80d0dea5e6aed16409532392b3194fe9,
+    type: 2}
+  negativeCursorPrefab: {fileID: 1108167706009474, guid: c48d862c961067b4abcd43e573349717,
+    type: 2}
+  dim:
+    Height: 1
+    Rect:
+      MinX: 0
+      MinZ: 0
+      MaxX: 1
+      MaxZ: 1
+  canBeBuiltNearMe:
+  - type: 120
+    position: 0

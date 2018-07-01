@@ -17,6 +17,7 @@ namespace BuilderGame.Model {
         SMALL_PILLAR = 103,
         WALL = 111,
         CORNER_WALL = 112,
+        LADDER = 120,
     }
 
 } // namespace ////

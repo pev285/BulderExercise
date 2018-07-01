@@ -39,6 +39,9 @@ MonoBehaviour:
   - type: 111
     objectDescription: {fileID: 11400000, guid: 44c0e5397051937469ea42ab9bafee0b,
       type: 2}
+  - type: 120
+    objectDescription: {fileID: 11400000, guid: 33173122a91c9ef498f5cdd5b592d1d7,
+      type: 2}
   - type: 112
     objectDescription: {fileID: 11400000, guid: 8f036f8a5d4143b4c813d1f9e6a521ef,
       type: 2}

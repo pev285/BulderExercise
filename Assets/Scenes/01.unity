@@ -777,9 +777,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '1-Panel, 2-Pillar, 3-Wall, 4-Ladder,      0 - No selected construction
+  m_Text: 'Constructions:   1-Panel, 2-Pillar, 3-Wall, 4-Ladder,      0 - No selected
+    construction
 
-    mouse button - Build'
+    Movement: W,S,A,D                View: Mouse
+
+    Left mouse button - Build,       ESC - Exit'
 --- !u!222 &463770043
 CanvasRenderer:
   m_ObjectHideFlags: 0

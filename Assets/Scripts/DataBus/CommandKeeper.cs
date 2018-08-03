@@ -13,7 +13,7 @@ namespace BuilderGame.DataBus
         public static Func<RaycastHit> GetCameraRaycastHit;
 
         public static Action<MapObjectType> OnBuildingBlockChoose;
-        public static Action OnBuildCommand;
+        public static Action OnBuildCommand = () => { };
 
         // input -> player //
         public static Action<float, float> OnPlayerMoveCommand;
@@ -33,6 +33,10 @@ namespace BuilderGame.DataBus
 
         // presenter -> model //
 
+
+        // Dual Universe //
+
+        public static Action SwitchCamera;
 
     }
 }
